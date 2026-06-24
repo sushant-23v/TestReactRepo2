@@ -2,84 +2,77 @@ import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 
 const links = [
-  { label: 'Home', to: '/' },
-  { label: 'About', to: '/about' },
-  { label: 'Menu', to: '/menu' },
-  { label: 'Gallery', to: '/gallery' },
-  { label: 'Contact', to: '/contact' },
+  { to: '/', label: 'Home', end: true },
+  { to: '/about', label: 'About' },
+  { to: '/menu', label: 'Menu' },
+  { to: '/gallery', label: 'Gallery' },
+  { to: '/contact', label: 'Contact' },
 ]
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
 
   const linkClass = ({ isActive }) =>
-    `text-sm font-medium transition-colors hover:text-amber-warm ${
-      isActive ? 'text-amber-warm' : 'text-cream'
+    `px-3 py-2 text-sm font-medium transition-colors ${
+      isActive ? 'text-amber-dark' : 'text-espresso hover:text-amber-dark'
     }`
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-espresso/90 backdrop-blur-md shadow-warm-sm">
+    <header className="fixed top-0 inset-x-0 z-50 bg-cream-paper/80 backdrop-blur border-b border-espresso/10">
       <nav className="mx-auto max-w-7xl px-4 md:px-8 lg:px-16">
         <div className="flex h-16 items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
-            <span className="text-xl font-bold tracking-tight text-cream">
-              Desxto<span className="text-amber-warm"> Coffee</span>
-            </span>
+            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-espresso text-cream font-bold">D</span>
+            <span className="text-lg font-bold text-espresso-dark">Desxto Coffee</span>
           </Link>
 
-          <div className="hidden md:flex md:items-center md:gap-8">
+          <div className="hidden md:flex items-center gap-1">
             {links.map((l) => (
-              <NavLink key={l.to} to={l.to} className={linkClass} end={l.to === '/'}>
+              <NavLink key={l.to} to={l.to} end={l.end} className={linkClass}>
                 {l.label}
               </NavLink>
             ))}
             <Link
-              to="/menu"
-              className="rounded-warm bg-amber-warm px-4 py-2 text-sm font-semibold text-espresso-dark transition-colors hover:bg-amber-light"
+              to="/contact"
+              className="ml-3 rounded-xl bg-amber px-4 py-2 text-sm font-semibold text-espresso-dark shadow-sm transition-colors hover:bg-amber-dark hover:text-white"
             >
-              Order Now
+              Visit Us
             </Link>
           </div>
 
           <button
+            className="md:hidden inline-flex items-center justify-center rounded-lg p-2 text-espresso hover:bg-espresso/10"
             onClick={() => setOpen((v) => !v)}
-            className="inline-flex items-center justify-center rounded-md p-2 text-cream md:hidden"
             aria-label="Toggle menu"
           >
-            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              {open ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
+            <span className="sr-only">Menu</span>
+            <div className="space-y-1.5">
+              <span className={`block h-0.5 w-6 bg-espresso transition-transform ${open ? 'translate-y-2 rotate-45' : ''}`} />
+              <span className={`block h-0.5 w-6 bg-espresso transition-opacity ${open ? 'opacity-0' : ''}`} />
+              <span className={`block h-0.5 w-6 bg-espresso transition-transform ${open ? '-translate-y-2 -rotate-45' : ''}`} />
+            </div>
           </button>
         </div>
       </nav>
 
       {open && (
-        <div className="md:hidden bg-espresso-dark border-t border-cream/10">
+        <div className="md:hidden border-t border-espresso/10 bg-cream-paper">
           <div className="flex flex-col px-4 py-3">
             {links.map((l) => (
               <NavLink
                 key={l.to}
                 to={l.to}
-                end={l.to === '/'}
+                end={l.end}
                 onClick={() => setOpen(false)}
                 className={({ isActive }) =>
-                  `py-3 text-base font-medium ${isActive ? 'text-amber-warm' : 'text-cream'}`
+                  `rounded-lg px-3 py-3 text-base font-medium ${
+                    isActive ? 'bg-espresso/10 text-amber-dark' : 'text-espresso'
+                  }`
                 }
               >
                 {l.label}
               </NavLink>
             ))}
-            <Link
-              to="/menu"
-              onClick={() => setOpen(false)}
-              className="mt-2 rounded-warm bg-amber-warm px-4 py-2 text-center text-sm font-semibold text-espresso-dark"
-            >
-              Order Now
-            </Link>
           </div>
         </div>
       )}

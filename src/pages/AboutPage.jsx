@@ -1,66 +1,48 @@
 import SectionHeading from '../components/ui/SectionHeading'
 import Card from '../components/ui/Card'
+import Button from '../components/ui/Button'
 
 const values = [
-  { title: 'Quality First', desc: 'Every bean is hand-selected and roasted to bring out its very best character.' },
-  { title: 'Genuine Warmth', desc: 'We greet everyone like an old friend — because that is exactly how it should feel.' },
-  { title: 'Community Rooted', desc: 'Desxto is a gathering place built around the people who make our neighborhood special.' },
+  { title: 'Sourced with Care', desc: 'We partner with growers who share our love for quality and sustainability.' },
+  { title: 'Roasted Locally', desc: 'Our beans are roasted in small batches to bring out their best character.' },
+  { title: 'Served with a Smile', desc: 'Friendly baristas who remember your name and your order.' },
 ]
 
 export default function AboutPage() {
   return (
     <div>
-      <section className="relative">
-        <img
-          src="https://images.pexels.com/photos/3184405/pexels-photo-3184405.jpeg?auto=compress&cs=tinysrgb&w=1600"
-          alt="The Desxto Coffee team"
-          loading="lazy"
-          className="h-72 w-full object-cover md:h-96"
-        />
-        <div className="absolute inset-0 bg-espresso-dark/60" />
-        <div className="absolute inset-0 flex items-center">
-          <div className="mx-auto w-full max-w-7xl px-4 md:px-8 lg:px-16">
-            <h1 className="text-4xl font-bold text-cream md:text-5xl">Our Story</h1>
-            <p className="mt-3 max-w-xl text-cream/90">A small dream that grew into a cozy corner of the city.</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-4 md:px-8 lg:px-16 py-16 md:py-24">
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
+      <section className="py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 md:px-8 lg:px-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
             <SectionHeading
-              eyebrow="Since the beginning"
-              title="Built on warmth and great coffee"
-              subtitle="Desxto Coffee began with a simple idea: create a space where great coffee and genuine hospitality come together."
+              eyebrow="Our Story"
+              title="Brewed from a Simple Idea"
+              subtitle="Desxto Coffee began with a love for great coffee and warm conversation. What started as a tiny corner roaster has grown into a cozy neighborhood haven."
             />
             <p className="mt-6 text-espresso-light">
-              What started as a single espresso machine and a passion for the perfect pour has grown into
-              a beloved neighborhood cafe. We believe coffee is more than a drink — it's a moment of
-              comfort, a reason to slow down, and an invitation to connect.
+              Every morning we open our doors to friends old and new, pouring craft and hospitality into each cup. We believe coffee is more than a drink — it's a moment to slow down and connect.
             </p>
-            <p className="mt-4 text-espresso-light">
-              Today, our team continues to roast in small batches, bake fresh each morning, and welcome
-              every guest with the same warmth we started with.
-            </p>
+            <div className="mt-8">
+              <Button to="/contact" variant="secondary">Come Say Hello</Button>
+            </div>
           </div>
           <img
-            src="https://images.pexels.com/photos/2566573/pexels-photo-2566573.jpeg?auto=compress&cs=tinysrgb&w=1200"
-            alt="Friends enjoying coffee together"
+            src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            alt="Cozy interior of Desxto Coffee"
             loading="lazy"
-            className="rounded-warm shadow-warm"
+            className="rounded-2xl object-cover w-full h-96 shadow-sm"
           />
         </div>
       </section>
 
-      <section className="bg-cream-paper">
-        <div className="mx-auto max-w-7xl px-4 md:px-8 lg:px-16 py-16 md:py-24">
-          <SectionHeading center eyebrow="What we stand for" title="Our core values" />
-          <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
+      <section className="py-16 md:py-24 bg-cream-paper">
+        <div className="mx-auto max-w-7xl px-4 md:px-8 lg:px-16">
+          <SectionHeading center eyebrow="What We Value" title="The Heart of Desxto" />
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
             {values.map((v) => (
-              <Card key={v.title} className="p-8 text-center">
-                <h3 className="text-xl font-semibold text-espresso">{v.title}</h3>
-                <p className="mt-3 text-sm text-espresso-light">{v.desc}</p>
+              <Card key={v.title} className="p-6">
+                <h3 className="text-xl font-semibold text-espresso-dark">{v.title}</h3>
+                <p className="mt-2 text-espresso-light">{v.desc}</p>
               </Card>
             ))}
           </div>
