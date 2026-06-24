@@ -1,27 +1,27 @@
 import SectionHeading from '../components/ui/SectionHeading'
 
 const photos = [
-  { id: 1640772, alt: 'Coffee cup on wooden table' },
-  { id: 958545, alt: 'Barista pouring latte art' },
-  { id: 1640777, alt: 'Cozy cafe interior' },
-  { id: 699953, alt: 'Fresh pastries on display' },
-  { id: 1366919, alt: 'Coffee beans close-up' },
-  { id: 4050315, alt: 'Minimal coffee setup' },
+  { id: 1640777, alt: 'Latte with foam art on a wooden table' },
+  { id: 699953, alt: 'Warm cafe interior with hanging lights' },
+  { id: 958545, alt: 'Tray of fresh pastries' },
+  { id: 1640772, alt: 'Barista pouring milk into espresso' },
+  { id: 2566573, alt: 'Friends chatting over coffee' },
+  { id: 3184405, alt: 'Cafe staff smiling behind the counter' },
 ]
 
 export default function GalleryPage() {
   return (
-    <div className="py-16 md:py-24">
-      <div className="mx-auto max-w-7xl px-4 md:px-8 lg:px-16">
+    <div>
+      <section className="mx-auto max-w-7xl px-4 md:px-8 lg:px-16 py-16 md:py-24">
         <SectionHeading
           center
-          eyebrow="Gallery"
-          title="A Peek Inside Desxto"
-          subtitle="Warm light, rich aromas, and a welcoming space made for you."
+          eyebrow="A peek inside"
+          title="The Desxto atmosphere"
+          subtitle="Soft lighting, the aroma of fresh espresso, and a chair that always has your name on it."
         />
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {photos.map((p) => (
-            <div key={p.id} className="overflow-hidden rounded-2xl shadow-sm">
+            <div key={p.id} className="overflow-hidden rounded-warm shadow-warm-sm">
               <img
                 src={`https://images.pexels.com/photos/${p.id}/pexels-photo-${p.id}.jpeg?auto=compress&cs=tinysrgb&w=600`}
                 alt={p.alt}
@@ -31,7 +31,7 @@ export default function GalleryPage() {
             </div>
           ))}
         </div>
-      </div>
+      </section>
     </div>
   )
 }

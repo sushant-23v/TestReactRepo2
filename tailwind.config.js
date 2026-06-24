@@ -9,7 +9,7 @@ export default {
           light: '#6D4C41',
         },
         amber: {
-          DEFAULT: '#FFB300',
+          warm: '#FFB300',
           dark: '#FF8F00',
           light: '#FFC947',
         },
@@ -20,6 +20,13 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Arial', 'sans-serif'],
+      },
+      borderRadius: {
+        warm: '14px',
+      },
+      boxShadow: {
+        warm: '0 10px 30px rgba(78,52,46,0.15)',
+        'warm-sm': '0 4px 14px rgba(78,52,46,0.10)',
       },
     },
   },
