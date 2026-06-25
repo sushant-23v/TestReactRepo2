@@ -1,90 +1,79 @@
 import { useState } from 'react'
 import SectionHeading from '../components/ui/SectionHeading'
 import Button from '../components/ui/Button'
-import Card from '../components/ui/Card'
 
 export default function ContactPage() {
-  const [form, setForm] = useState({ name: '', email: '', message: '' })
+  const [form, setForm] = useState({ name: '', email: '', travelers: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value })
-  }
+  const handleChange = (e) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }))
 
   const handleSubmit = (e) => {
     e.preventDefault()
     setSubmitted(true)
   }
 
-  const inputClass =
-    'w-full rounded-xl border border-espresso/20 bg-cream-paper px-4 py-3 text-espresso focus:border-amber-dark focus:outline-none focus:ring-2 focus:ring-amber/40'
-
   return (
-    <div className="py-16 md:py-24">
-      <div className="mx-auto max-w-7xl px-4 md:px-8 lg:px-16 grid grid-cols-1 lg:grid-cols-2 gap-12">
+    <div>
+      <section className="bg-teal-700 text-white">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-20">
+          <h1 className="text-4xl md:text-5xl font-bold">Plan With Us</h1>
+          <p className="mt-4 max-w-2xl text-teal-100">Tell us your preferences and we'll fine-tune transfers, activities and stays.</p>
+        </div>
+      </section>
+
+      <section className="max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-24 grid gap-12 lg:grid-cols-2">
         <div>
           <SectionHeading
-            eyebrow="Contact"
-            title="Come Visit Us"
-            subtitle="Stop by for a cup, or drop us a line — we'd love to hear from you."
+            eyebrow="Get in Touch"
+            title="Send an enquiry"
+            subtitle="Share your travel dates and group details — we'll respond with a tailored plan."
           />
-          <div className="mt-8 space-y-4 text-espresso-light">
-            <p><span className="font-semibold text-espresso-dark">Address:</span> 123 Roastery Lane, Bean City</p>
-            <p><span className="font-semibold text-espresso-dark">Email:</span> hello@desxtocoffee.com</p>
-            <p><span className="font-semibold text-espresso-dark">Phone:</span> (555) 012-3456</p>
-            <p><span className="font-semibold text-espresso-dark">Hours:</span> Mon–Sun, 7am – 7pm</p>
+          <div className="mt-8 space-y-4 text-gray-700">
+            <p><span className="font-semibold text-gray-900">Trip window:</span> 29 Jun – 5 Jul 2026</p>
+            <p><span className="font-semibold text-gray-900">Bases:</span> Palolem (3N) &amp; Agonda (3N)</p>
+            <p><span className="font-semibold text-gray-900">Group:</span> 2 adults + 1 child</p>
+            <p>
+              <span className="font-semibold text-gray-900">More info:</span>{' '}
+              <a href="https://www.goa-tourism.com" target="_blank" rel="noopener noreferrer" className="text-teal-600 hover:underline">Goa Tourism</a>
+            </p>
           </div>
         </div>
 
-        <Card className="p-6 md:p-8">
+        <div className="rounded-2xl bg-white border border-gray-100 shadow-sm p-6 md:p-8">
           {submitted ? (
             <div className="text-center py-12">
-              <h3 className="text-2xl font-bold text-espresso-dark">Thanks for reaching out!</h3>
-              <p className="mt-3 text-espresso-light">We'll get back to you as soon as we can.</p>
+              <div className="mx-auto w-14 h-14 rounded-full bg-teal-100 flex items-center justify-center text-teal-700 text-2xl">✓</div>
+              <h3 className="mt-4 text-xl font-semibold text-gray-900">Thanks, {form.name || 'traveler'}!</h3>
+              <p className="mt-2 text-gray-600">Your enquiry is in. We'll get back to you with a tailored South Goa plan.</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
-                <label className="block text-sm font-medium text-espresso-dark mb-1">Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={form.name}
-                  onChange={handleChange}
-                  required
-                  className={inputClass}
-                  placeholder="Your name"
-                />
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
+                <input id="name" name="name" value={form.name} onChange={handleChange} required
+                  className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 focus:border-teal-500 focus:ring-teal-500 outline-none" />
               </div>
               <div>
-                <label className="block text-sm font-medium text-espresso-dark mb-1">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  required
-                  className={inputClass}
-                  placeholder="you@example.com"
-                />
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+                <input id="email" name="email" type="email" value={form.email} onChange={handleChange} required
+                  className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 focus:border-teal-500 focus:ring-teal-500 outline-none" />
               </div>
               <div>
-                <label className="block text-sm font-medium text-espresso-dark mb-1">Message</label>
-                <textarea
-                  name="message"
-                  value={form.message}
-                  onChange={handleChange}
-                  required
-                  rows={4}
-                  className={inputClass}
-                  placeholder="How can we help?"
-                />
+                <label htmlFor="travelers" className="block text-sm font-medium text-gray-700">Travelers</label>
+                <input id="travelers" name="travelers" value={form.travelers} onChange={handleChange} placeholder="e.g. 2 adults + 1 child"
+                  className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 focus:border-teal-500 focus:ring-teal-500 outline-none" />
               </div>
-              <Button type="submit" className="w-full">Send Message</Button>
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700">Message</label>
+                <textarea id="message" name="message" rows="4" value={form.message} onChange={handleChange}
+                  className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 focus:border-teal-500 focus:ring-teal-500 outline-none" />
+              </div>
+              <Button type="submit" className="w-full">Send Enquiry</Button>
             </form>
           )}
-        </Card>
-      </div>
+        </div>
+      </section>
     </div>
   )
 }

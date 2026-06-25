@@ -3,45 +3,40 @@ import { Link } from 'react-router-dom'
 export default function Footer() {
   return (
     <footer className="bg-gray-900 text-white">
-      <div className="mx-auto max-w-7xl px-4 md:px-8 lg:px-16 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 py-12 grid gap-10 md:grid-cols-3">
         <div>
-          <div className="flex items-center gap-2">
-            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-amber text-espresso-dark font-bold">D</span>
-            <span className="text-lg font-bold">Desxto Coffee</span>
-          </div>
-          <p className="mt-4 text-sm text-gray-300">
-            Warm & cozy coffee, crafted with care. Your neighborhood spot for a perfect cup.
+          <h3 className="text-lg font-bold text-teal-400">South Goa Escape</h3>
+          <p className="mt-3 text-sm text-gray-400">
+            Calm crescent bays, starry Agonda nights & monsoon-friendly beach days — a 6-night family escape, thoughtfully planned.
           </p>
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wider text-amber">Navigation</h3>
-          <ul className="mt-4 space-y-2 text-sm text-gray-300">
-            <li><Link to="/" className="hover:text-amber">Home</Link></li>
-            <li><Link to="/about" className="hover:text-amber">About</Link></li>
-            <li><Link to="/menu" className="hover:text-amber">Menu</Link></li>
-            <li><Link to="/gallery" className="hover:text-amber">Gallery</Link></li>
-            <li><Link to="/contact" className="hover:text-amber">Contact</Link></li>
+          <h4 className="text-sm font-semibold uppercase tracking-wide text-gray-300">Explore</h4>
+          <ul className="mt-4 space-y-2 text-sm text-gray-400">
+            <li><Link to="/itinerary" className="hover:text-teal-400">Itinerary</Link></li>
+            <li><Link to="/stays" className="hover:text-teal-400">Stays</Link></li>
+            <li><Link to="/activities" className="hover:text-teal-400">Activities</Link></li>
+            <li><Link to="/about" className="hover:text-teal-400">About</Link></li>
           </ul>
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wider text-amber">Get in Touch</h3>
-          <ul className="mt-4 space-y-2 text-sm text-gray-300">
-            <li>123 Roastery Lane, Bean City</li>
-            <li>hello@desxtocoffee.com</li>
-            <li>(555) 012-3456</li>
+          <h4 className="text-sm font-semibold uppercase tracking-wide text-gray-300">Get in Touch</h4>
+          <ul className="mt-4 space-y-2 text-sm text-gray-400">
+            <li>Trip: 29 Jun – 5 Jul 2026</li>
+            <li>Bases: Palolem &amp; Agonda</li>
+            <li><Link to="/contact" className="hover:text-teal-400">Send an enquiry</Link></li>
+            <li>
+              <a href="https://www.goa-tourism.com" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400">Goa Tourism</a>
+            </li>
           </ul>
-          <div className="mt-4 flex gap-3">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-amber">Instagram</a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-amber">Facebook</a>
-          </div>
         </div>
       </div>
-      <div className="border-t border-white/10">
-        <div className="mx-auto max-w-7xl px-4 md:px-8 lg:px-16 py-6 text-center text-sm text-gray-400">
-          &copy; {new Date().getFullYear()} Desxto Coffee. All rights reserved.
-        </div>
+      <div className="border-t border-gray-800">
+        <p className="max-w-7xl mx-auto px-4 md:px-8 py-6 text-xs text-gray-500">
+          © {new Date().getFullYear()} South Goa Escape. Crafted for a quiet-but-lively coastal holiday.
+        </p>
       </div>
     </footer>
   )
